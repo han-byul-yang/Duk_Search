@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 
-import Main from 'components/Main'
-import Search from 'components/Search'
+import Main from 'routes/Main'
+import Search from 'routes/Search'
 
 import styles from './routes.module.scss'
 
