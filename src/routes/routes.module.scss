@@ -1,0 +1,7 @@
+@use '../styles/constants/levels';
+
+.page {
+  position: relative;
+  z-index: levels.$BASIC;
+  display: flex;
+}
