@@ -21,7 +21,7 @@ const NavBar = () => {
   }, [])
 
   return (
-    <nav className={styles.navigation}>
+    <nav className={styles.gnb}>
       <Link to='/'>
         <LogoIcon className={styles.logo} />
       </Link>

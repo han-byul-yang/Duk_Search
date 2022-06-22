@@ -1,15 +1,21 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+
+import styles from './lnb.module.scss'
 
 const categoryList = ['전체', '뉴스', '연예', '음악', '음식', '게임', '뷰티', '스포츠', '키즈']
 
 const LNB = () => {
   return (
-    <nav>
+    <nav className={styles.lnb}>
       <ul>
         {categoryList.map((category) => (
-          <Link key={category} to={`${category}`}>
+          <NavLink
+            key={category}
+            to={category}
+            className={({ isActive }) => (isActive ? styles.activatedLink : styles.nonActivatedLink)}
+          >
             <li>{category}</li>
-          </Link>
+          </NavLink>
         ))}
       </ul>
     </nav>
