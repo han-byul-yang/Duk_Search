@@ -1,0 +1,8 @@
+.searchPage {
+  width: 100%;
+  padding: 10px 100px;
+
+  @media screen and (max-width: 1050px) {
+    padding: 10px 25px;
+  }
+}

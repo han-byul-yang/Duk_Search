@@ -1,5 +1,5 @@
-import Chart from 'components/Chart'
-import NavBar from 'components/NavBar'
+import Chart from 'routes/Chart'
+import NavBar from 'components/GNB'
 import { Route, Routes } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 
@@ -15,7 +15,7 @@ const App = () => {
         <NavBar />
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='search' element={<Search />} />
+          <Route path='search/*' element={<Search />} />
           <Route path='chart' element={<Chart />} />
           <Route path='*' element={<div>404</div>} />
         </Routes>

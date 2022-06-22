@@ -19,6 +19,10 @@
   input {
     width: 100%;
     padding: 13px 13px 13px 40px;
-    color: colors.$GRAY_300;
+    color: colors.$GRAY_800;
+
+    &::placeholder {
+      color: colors.$GRAY_300;
+    }
   }
 }

@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import cx from 'classnames'
 
 import { ChartIcon, HamburgerIcon, HomeIcon, LogoIcon } from 'assets/svgs'
 
-import styles from './navBar.module.scss'
+import styles from './gnb.module.scss'
 
 const NavBar = () => {
   const [isSmall, setIsSmall] = useState(false)
