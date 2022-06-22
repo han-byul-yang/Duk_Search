@@ -58,3 +58,6 @@ const NavBar = () => {
 }
 
 export default NavBar
+
+// logo size
+// open gnb close gnb

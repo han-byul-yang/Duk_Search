@@ -23,3 +23,6 @@ const LNB = () => {
 }
 
 export default LNB
+
+// display fix
+// activate lnb
