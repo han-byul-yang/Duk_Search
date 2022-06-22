@@ -1,5 +1,7 @@
+import SearchBar from 'components/SearchBar'
+
 const Search = () => {
-  return <div>search</div>
+  return <SearchBar />
 }
 
 export default Search

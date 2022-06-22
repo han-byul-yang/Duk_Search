@@ -15,7 +15,6 @@
     justify-content: space-between;
     width: 100vw;
     height: 130px;
-    padding: 0 15px;
   }
 
   .logo {
@@ -64,10 +63,12 @@
       }
     }
   }
-}
 
-.middleNavigation {
-  display: flex;
+  .hamburgerIcon {
+    width: 25px;
+    height: 25px;
+    margin-right: 30px;
+  }
 }
 
 .navLink {
@@ -84,9 +85,4 @@
 .nonActivatedLink {
   color: colors.$GRAY_800;
   fill: colors.$GRAY_800;
-}
-
-.hamburgerIcon {
-  width: 25px;
-  height: 25px;
 }

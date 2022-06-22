@@ -1,0 +1,24 @@
+@use '../../styles/constants/colors';
+
+.inputForm {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  margin: 15px 0;
+  background: colors.$GRAY_100;
+  border-radius: 15px;
+
+  .searchIcon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin: 11px 0 0 11px;
+    fill: colors.$KEY;
+  }
+
+  input {
+    width: 100%;
+    padding: 13px 13px 13px 40px;
+    color: colors.$GRAY_300;
+  }
+}
