@@ -1,4 +1,4 @@
-import { HamburgerIcon, LogoIcon } from 'assets/svgs'
+import { ChartIcon, HamburgerIcon, HomeIcon, LogoIcon } from 'assets/svgs'
 import styles from './navBar.module.scss'
 
 const NavBar = () => {
@@ -6,8 +6,14 @@ const NavBar = () => {
     <nav className={styles.navigation}>
       <LogoIcon className={styles.logo} />
       <ul className={styles.navigationList}>
-        <li>SEARCH</li>
-        <li>CHART</li>
+        <li>
+          <HomeIcon />
+          SEARCH
+        </li>
+        <li>
+          <ChartIcon />
+          CHART
+        </li>
       </ul>
     </nav>
   )
