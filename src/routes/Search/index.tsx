@@ -1,5 +1,6 @@
-import SearchBar from 'components/SearchBar'
 import { Route, Routes } from 'react-router-dom'
+
+import SearchBar from 'components/SearchBar'
 import LNB from './LNB'
 import MainContent from './MainContent'
 

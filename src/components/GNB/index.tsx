@@ -9,6 +9,8 @@ const NavBar = () => {
   const [isSmall, setIsSmall] = useState(false)
 
   useEffect(() => {
+    setIsSmall(!(window.innerWidth < 768))
+
     const handleResize = () => {
       setIsSmall(!(window.innerWidth < 768))
     }

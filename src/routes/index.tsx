@@ -1,10 +1,10 @@
-import Chart from 'routes/Chart'
-import NavBar from 'components/GNB'
 import { Route, Routes } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 
+import Chart from 'routes/Chart'
 import Main from 'routes/Main'
 import Search from 'routes/Search'
+import NavBar from 'components/GNB'
 
 import styles from './routes.module.scss'
 
