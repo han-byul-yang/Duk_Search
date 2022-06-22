@@ -1,3 +1,4 @@
+import NavBar from 'components/NavBar'
 import { Route, Routes } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 
@@ -10,6 +11,7 @@ const App = () => {
   return (
     <div className={styles.page}>
       <RecoilRoot>
+        <NavBar />
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='search' element={<Search />} />
