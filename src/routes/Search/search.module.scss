@@ -1,6 +1,11 @@
 .searchPage {
   width: 100%;
-  padding: 10px 100px 10px 30px;
+  padding: 10px 30px;
+
+  @media screen and (min-width: 1050px) {
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+  }
 
   @media screen and (max-width: 1050px) {
     padding: 10px 25px 10px 0;
@@ -9,4 +14,9 @@
   @media screen and (max-width: 768px) {
     padding: 10px 25px;
   }
+}
+
+.bigContainer {
+  display: grid;
+  grid-template-columns: 6fr 1fr;
 }
