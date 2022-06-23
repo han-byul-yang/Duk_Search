@@ -1,0 +1,69 @@
+@use '../../../styles/constants/colors';
+
+.navigationList {
+  height: 100vh;
+  padding: 0 30px;
+  font-size: 20px;
+  font-weight: 500;
+  color: colors.$GRAY_800;
+  background: colors.$BG_G;
+
+  @media screen and (max-width: 1050px) {
+    margin-top: 130px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding-top: 40px;
+    margin-top: 0;
+    border-radius: 7px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 20%);
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    height: 25px;
+    margin-bottom: 30px;
+
+    span {
+      @media screen and (max-width: 1050px) {
+        display: none;
+      }
+      @media screen and (max-width: 768px) {
+        display: inline-block;
+      }
+    }
+
+    .navIcon {
+      width: 25px;
+      height: 25px;
+      margin-right: 8px;
+
+      @media screen and (max-width: 1050px) {
+        margin-right: 0;
+      }
+
+      @media screen and (max-width: 768px) {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.navLink {
+  width: 100%;
+  height: 25px;
+  // border: 1px solid colors.$KEY;
+}
+
+.activatedLink {
+  color: colors.$KEY;
+  fill: colors.$KEY;
+}
+
+.nonActivatedLink {
+  color: colors.$GRAY_800;
+  fill: colors.$GRAY_800;
+}

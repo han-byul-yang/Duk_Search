@@ -1,0 +1,62 @@
+@use '../../styles/constants/colors';
+
+.navigation {
+  position: relative;
+  width: 260px;
+  height: 100vh;
+
+  @media screen and (max-width: 1050px) {
+    width: auto;
+    height: auto;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 130px;
+  }
+
+  .logo {
+    width: 260px;
+    height: 130px;
+
+    @media screen and (max-width: 1050px) {
+      display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      display: inline-block;
+      width: 220px;
+      height: 100px;
+    }
+  }
+
+  .smallNavigation {
+    display: flex;
+    flex-direction: column;
+
+    .hamburgerIcon {
+      width: 25px;
+      height: 25px;
+      margin-right: 30px;
+      cursor: pointer;
+    }
+
+    .showGNB {
+      position: fixed;
+      top: 3px;
+      right: 0;
+      z-index: 100;
+      display: inline-block;
+      transition: right 0.2s linear;
+    }
+
+    .unShowGNB {
+      position: fixed;
+      top: 3px;
+      right: -180px;
+    }
+  }
+}

@@ -5,7 +5,7 @@ import { QueryClientProvider, QueryClient } from 'react-query'
 import Chart from 'routes/Chart'
 import Main from 'routes/Main'
 import Search from 'routes/Search'
-import NavBar from 'components/GNB'
+import Navigation from 'components/Navigation'
 
 import styles from './routes.module.scss'
 
@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div className={styles.page}>
       <RecoilRoot>
-        <NavBar />
+        <Navigation />
         <QueryClientProvider client={queryClient}>
           <Routes>
             <Route path='/' element={<Main />} />
