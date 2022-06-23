@@ -61,3 +61,4 @@ export default NavBar
 
 // logo size
 // open gnb close gnb
+// search 아이콘 누르면 searchBar input key 사라지기, recoil 값도

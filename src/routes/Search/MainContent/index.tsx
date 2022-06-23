@@ -31,6 +31,7 @@ const MainContent = ({ category }: ICategory) => {
 
   return (
     <div>
+      {/* eslint-disable-next-line no-nested-ternary */}
       {category ? (
         twitterData.map((data) => {
           const { id, nickName, date, img, text } = data
@@ -51,10 +52,12 @@ const MainContent = ({ category }: ICategory) => {
             </div>
           )
         })
-      ) : (
+      ) : searchKey ? (
         <div>
           {params?.category} 카테고리에서 찾은 {searchKey}
         </div>
+      ) : (
+        <div>검색어를 입력하세요</div>
       )}
     </div>
   )
