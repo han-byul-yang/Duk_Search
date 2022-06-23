@@ -4,31 +4,57 @@ import { useRecoilValue } from 'recoil'
 import { useQuery } from 'react-query'
 
 import { getTwitterData } from 'services/getData'
+import twitterData from '../../../data/twitterDatas.json'
 import { searchKeyAtom } from 'store/atoms'
+import { ITwitterData } from 'types/types'
 
-const MainContent = () => {
-  const [twitterDataList, setTwitterDataList] = useState([])
+import styles from './mainContent.module.scss'
+
+interface ICategory {
+  category?: string
+}
+
+const MainContent = ({ category }: ICategory) => {
+  const [twitterDataList, setTwitterDataList] = useState<ITwitterData[]>()
   const searchKey = useRecoilValue(searchKeyAtom)
   const params = useParams()
 
-  const { isLoading } = useQuery('twitterData', getTwitterData, {
-    onSuccess: (res) => {
-      setTwitterDataList(res.data)
-    },
-  })
+  // const { isLoading } = useQuery('twitterData', getTwitterData, {
+  //   onSuccess: (res) => {
+  //     setTwitterDataList(res.data)
+  //   },
+  // })
 
-  if (isLoading) {
-    return <div className='isLoading'>로딩 중...</div>
-  }
+  // if (isLoading) {
+  //   return <div className='isLoading'>로딩 중...</div>
+  // }
 
   return (
     <div>
-      {searchKey ? (
+      {category ? (
+        twitterData.map((data) => {
+          const { id, nickName, date, img, text } = data
+          const dataKey = `data-${id}`
+          return (
+            <div key={dataKey} className={styles.container}>
+              <div className={styles.nickName}>{nickName}</div>
+              <div className={styles.date}>{date}</div>
+              <div className={styles.text}>{text}</div>
+              {img.length !== 0 && (
+                <div className={styles.imgContainer}>
+                  {img.map((imgUrl, i) => {
+                    const imgKey = `imgUrl-${i}`
+                    return <img key={imgKey} className={styles.img} src={`${imgUrl}`} alt='게시글 이미지' />
+                  })}
+                </div>
+              )}
+            </div>
+          )
+        })
+      ) : (
         <div>
           {params?.category} 카테고리에서 찾은 {searchKey}
         </div>
-      ) : (
-        <div>검색어를 입력해주세요</div>
       )}
     </div>
   )

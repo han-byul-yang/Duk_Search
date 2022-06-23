@@ -1,0 +1,39 @@
+@use '../../../styles/constants/colors';
+
+.container {
+  width: 100%;
+  height: auto;
+  padding: 5px 15px 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid colors.$GRAY_100;
+
+  .nickName {
+    font-size: 20px;
+    font-weight: 700;
+    color: colors.$GRAY_800;
+  }
+
+  .date {
+    margin-top: 5px;
+    font-size: 13px;
+    color: colors.$GRAY_300;
+  }
+
+  .text {
+    margin-top: 5px;
+    line-height: 20px;
+  }
+
+  .imgContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    margin: 10px 0;
+
+    .img {
+      width: 100%;
+      max-height: 600px;
+      border-radius: 15px;
+    }
+  }
+}

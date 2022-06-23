@@ -12,6 +12,7 @@ const Search = () => {
       <SearchBar />
       <LNB />
       <Routes>
+        <Route path='/' element={<MainContent category='전체' />} />
         <Route path=':category' element={<MainContent />} />
       </Routes>
     </div>
