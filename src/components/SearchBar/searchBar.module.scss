@@ -20,6 +20,7 @@
     width: 100%;
     padding: 13px 13px 13px 40px;
     color: colors.$GRAY_800;
+    border-bottom: 1px solid colors.$BG_G;
 
     &::placeholder {
       color: colors.$GRAY_300;
