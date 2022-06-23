@@ -1,11 +1,25 @@
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
+import { useQuery } from 'react-query'
 
+import { getTwitterData } from 'services/getData'
 import { searchKeyAtom } from 'store/atoms'
 
 const MainContent = () => {
+  const [twitterDataList, setTwitterDataList] = useState([])
   const searchKey = useRecoilValue(searchKeyAtom)
   const params = useParams()
+
+  const { isLoading } = useQuery('twitterData', getTwitterData, {
+    onSuccess: (res) => {
+      setTwitterDataList(res.data)
+    },
+  })
+
+  if (isLoading) {
+    return <div className='isLoading'>로딩 중...</div>
+  }
 
   return (
     <div>

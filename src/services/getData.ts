@@ -6,11 +6,11 @@ const sleep = (delay: number) => {
 }
 
 export const getTwitterData = async () => {
-  await sleep(1000)
+  // await sleep(100)
 
   const data = await axios.get('data/twitterData.json')
 
   return data
 }
 
-// 이렇게 servies 폴더를 따로 만들어 관리하는 것이 더 좋은 것인지 생각해보기
+// 데이터 하나 불러오는데 이렇게 servies 폴더를 따로 만들어 관리하는 것이 더 좋은 것인지 생각해보기
