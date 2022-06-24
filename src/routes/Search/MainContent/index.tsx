@@ -40,7 +40,7 @@ const MainContent = ({ category }: ICategory) => {
 
   return (
     <>
-      <main>
+      <main className={styles.mainContents}>
         {/* eslint-disable-next-line no-nested-ternary */}
         {category ? (
           twitterData.map((data) => {
@@ -63,11 +63,11 @@ const MainContent = ({ category }: ICategory) => {
             )
           })
         ) : searchKey ? (
-          <div>
+          <div className={styles.searchResult}>
             {params?.category} 카테고리에서 찾은 {searchKey}
           </div>
         ) : (
-          <div>검색어를 입력하세요</div>
+          <div className={styles.noSearchKeyMsg}>검색어를 입력하세요</div>
         )}
       </main>
       {openModal && (

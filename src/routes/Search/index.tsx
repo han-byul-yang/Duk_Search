@@ -23,12 +23,27 @@ const Search = () => {
   }, [])
   return (
     <div className={styles.searchPage}>
-      <SearchBar />
-      <LNB />
-      <Routes>
-        <Route path='/' element={<MainContent category='전체' />} />
-        <Route path=':category' element={<MainContent />} />
-      </Routes>
+      {isBig ? (
+        <>
+          <div className={styles.container}>
+            <SearchBar />
+            <Routes>
+              <Route path='/' element={<MainContent category='전체' />} />
+              <Route path=':category' element={<MainContent />} />
+            </Routes>
+          </div>
+          <LNB />
+        </>
+      ) : (
+        <>
+          <SearchBar />
+          <LNB />
+          <Routes>
+            <Route path='/' element={<MainContent category='전체' />} />
+            <Route path=':category' element={<MainContent />} />
+          </Routes>
+        </>
+      )}
     </div>
   )
 }

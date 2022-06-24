@@ -1,12 +1,30 @@
 @use '../../styles/constants/colors';
 
+.unShowInput {
+  display: none;
+}
+
+.showInput {
+  display: inline-block;
+}
+
 .inputForm {
   position: relative;
-  width: 100%;
+  max-width: 450px;
   height: fit-content;
   margin: 15px 0;
-  background: colors.$GRAY_100;
+  background: colors.$BG_G;
   border-radius: 15px;
+  box-shadow: 1px 1px 15px rgba(0, 0, 0, 15%);
+
+  @media screen and (max-width: 1050px) {
+    max-width: 100%;
+    margin: 0 50px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 0;
+  }
 
   .searchIcon {
     position: absolute;
@@ -26,4 +44,53 @@
       color: colors.$GRAY_300;
     }
   }
+
+  .currentKeyList {
+    position: absolute;
+    z-index: 50;
+    width: 100%;
+    padding: 10px 5px;
+    margin-top: 3px;
+    background: colors.$BG_G;
+    border-radius: 15px;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 15%);
+
+    .searchedKeyBtn {
+      display: flex;
+      justify-items: center;
+      width: 100%;
+      padding: 8px;
+      color: colors.$GRAY_800;
+      border-radius: 5px;
+      transition: 0.1s linear;
+
+      &:hover {
+        background: colors.$GRAY_100;
+
+        .deleteBtn {
+          color: colors.$GRAY_300;
+        }
+      }
+
+      .timeIcon {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+        fill: colors.$GRAY_100;
+      }
+
+      .deleteBtn {
+        position: absolute;
+        right: 25px;
+        color: colors.$BG_G;
+
+        &:hover {
+          color: colors.$LIGHT_RED;
+          border-bottom: 1px solid colors.$LIGHT_RED;
+        }
+      }
+    }
+  }
 }
+
+// fill ㅈㅓㄱㅇㅛㅇ
