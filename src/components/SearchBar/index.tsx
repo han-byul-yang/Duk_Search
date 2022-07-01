@@ -44,6 +44,7 @@ const SearchBar = () => {
       }
       return prevList
     })
+    setShowInput(false)
     navigate('전체')
   }
 
@@ -53,6 +54,8 @@ const SearchBar = () => {
 
   const handleSearchedKeyClick = (searchedKeys: string) => {
     setSearchKey(searchedKeys)
+    setValueInput(searchedKeys)
+    setShowInput(false)
     navigate('전체')
   }
 
