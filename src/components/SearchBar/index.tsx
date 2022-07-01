@@ -40,34 +40,62 @@ const SearchBar = () => {
     setSearchKey(valueInput)
     setSearchKeyList((prevList) => {
       if (prevList?.indexOf(valueInput) === -1) {
-        return [...prevList, valueInput]
+        return [valueInput, ...prevList]
       }
       return prevList
     })
     navigate('전체')
   }
 
-  const handleSearchedKeyClick = () => {}
+  const handleInputClick = () => {
+    setShowInput(true)
+  }
+
+  const handleSearchedKeyClick = (searchedKeys: string) => {
+    setSearchKey(searchedKeys)
+    navigate('전체')
+  }
+
+  const handleDeleteSearchedKeyClick = (i: number) => {
+    setSearchKeyList((prevList) => {
+      const copyList = [...prevList]
+      copyList.splice(i, 1)
+      return copyList
+    })
+  }
 
   return (
     <form className={styles.inputForm} onSubmit={handleInputValueSubmit}>
       <SearchIcon className={styles.searchIcon} />
-      <input type='search' placeholder='키워드를 입력해주세요' value={valueInput} onChange={handleInputValueChange} />
+      <input
+        type='search'
+        placeholder='키워드를 입력해주세요'
+        value={valueInput}
+        onChange={handleInputValueChange}
+        onClick={handleInputClick}
+      />
       <div className={showInput ? styles.showInput : styles.unShowInput} ref={inputRef}>
         <ul className={styles.currentKeyList}>
           {searchKeyList?.map((searchedKeys, i) => {
             const searchedKey = `searchedKey-${i}`
-            return (
-              <li key={searchedKey}>
-                <button className={styles.searchedKeyBtn} type='button' onClick={handleSearchedKeyClick}>
-                  <TimeIcon className={styles.timeIcon} />
-                  <span>{searchedKeys}</span>
-                  <button className={styles.deleteBtn} type='button'>
-                    삭제
+            if (searchedKeys.includes(valueInput)) {
+              return (
+                <li key={searchedKey}>
+                  <button
+                    className={styles.searchedKeyBtn}
+                    type='button'
+                    onClick={() => handleSearchedKeyClick(searchedKeys)}
+                  >
+                    <TimeIcon className={styles.timeIcon} />
+                    <span>{searchedKeys}</span>
+                    <button className={styles.deleteBtn} type='button' onClick={() => handleDeleteSearchedKeyClick(i)}>
+                      삭제
+                    </button>
                   </button>
-                </button>
-              </li>
-            )
+                </li>
+              )
+            }
+            return null
           })}
         </ul>
       </div>

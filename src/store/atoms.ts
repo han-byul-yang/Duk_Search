@@ -11,8 +11,8 @@ export const searchKeyAtom = atom<string>({
   default: '',
 })
 
-export const searchKeyListAtom = atom<string[] | undefined>({
+export const searchKeyListAtom = atom<string[]>({
   key: 'searchKeyList',
-  default: [],
+  default: [''],
   effects_UNSTABLE: [persistAtom],
 })
