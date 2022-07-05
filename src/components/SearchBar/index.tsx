@@ -33,6 +33,7 @@ const SearchBar = () => {
 
   const handleInputValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValueInput(e.currentTarget.value)
+    setShowInput(true)
   }
 
   const handleInputValueSubmit = (e: FormEvent<HTMLFormElement>) => {
