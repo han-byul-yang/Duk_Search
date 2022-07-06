@@ -19,7 +19,9 @@ const App = () => {
         <QueryClientProvider client={queryClient}>
           <Routes>
             <Route path='/' element={<Main />} />
-            <Route path='search/*' element={<Search />} />
+            <Route path='search' element={<Search />}>
+              <Route path=':category' element={<Search />} />
+            </Route>
             <Route path='chart' element={<Chart />} />
             <Route path='*' element={<div>404</div>} />
           </Routes>

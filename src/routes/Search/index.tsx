@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import SearchBar from 'components/SearchBar'
 import LNB from './LNB'
-import MainContent from './MainContent'
 
 import styles from './search.module.scss'
+
+const MainContent = React.lazy(() => import('./MainContent'))
 
 const Search = () => {
   const [isBig, setIsBig] = useState(false)
@@ -27,10 +28,12 @@ const Search = () => {
         <>
           <div className={styles.container}>
             <SearchBar />
-            <Routes>
-              <Route path='/' element={<MainContent category='전체' />} />
-              <Route path=':category' element={<MainContent />} />
-            </Routes>
+            <Suspense fallback={<div>loading...</div>}>
+              <Routes>
+                <Route path='/' element={<MainContent category='전체' />} />
+                <Route path=':category' element={<MainContent />} />
+              </Routes>
+            </Suspense>
           </div>
           <LNB />
         </>
@@ -38,10 +41,12 @@ const Search = () => {
         <>
           <SearchBar />
           <LNB />
-          <Routes>
-            <Route path='/' element={<MainContent category='전체' />} />
-            <Route path=':category' element={<MainContent />} />
-          </Routes>
+          <Suspense fallback={<div>loading...</div>}>
+            <Routes>
+              <Route path='/' element={<MainContent category='전체' />} />
+              <Route path=':category' element={<MainContent />} />
+            </Routes>
+          </Suspense>
         </>
       )}
     </div>

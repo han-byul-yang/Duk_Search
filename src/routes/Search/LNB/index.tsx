@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom'
+import cx from 'classnames'
 
 import styles from './lnb.module.scss'
 
-const categoryList = ['all', 'news', '연예', '음악', '음식', '게임', '뷰티', '스포츠', '키즈']
+const categoryList = ['전체', '뉴스', '연예', '음악', '음식', '게임', '뷰티', '스포츠', '키즈']
 
 const LNB = () => {
   return (
@@ -12,7 +13,7 @@ const LNB = () => {
           <li key={category}>
             <NavLink
               to={category}
-              className={({ isActive }) => (isActive ? styles.activatedLink : styles.nonActivatedLink)}
+              className={({ isActive }) => cx(styles.nonActivatedLink, { [styles.activatedLink]: isActive })}
             >
               {category}
             </NavLink>
