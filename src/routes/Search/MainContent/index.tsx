@@ -25,7 +25,6 @@ const MainContent = ({ category }: ICategory) => {
   const { isLoading } = useQuery('twitterData', getTwitterData, {
     onSuccess: (res) => {
       setTwitterDataList(res.data)
-      console.log(res.data)
     },
     retry: 1,
   })
