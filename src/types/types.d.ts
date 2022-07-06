@@ -2,6 +2,6 @@ export interface ITwitterData {
   id: number
   nickName: string
   date: string
-  img: Array
+  img: string[]
   text: string
 }

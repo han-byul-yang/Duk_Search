@@ -4,7 +4,6 @@ import { useRecoilValue } from 'recoil'
 import { useQuery } from 'react-query'
 
 import { getTwitterData } from 'services/getData'
-import twitterData from '../../../data/twitterDatas.json'
 import { searchKeyAtom } from 'store/atoms'
 import { ITwitterData } from 'types/types'
 import ModalPortal from '../Modal/ModalPortal'
@@ -23,15 +22,17 @@ const MainContent = ({ category }: ICategory) => {
   const searchKey = useRecoilValue(searchKeyAtom)
   const params = useParams()
 
-  // const { isLoading } = useQuery('twitterData', getTwitterData, {
-  //   onSuccess: (res) => {
-  //     setTwitterDataList(res.data)
-  //   },
-  // })
+  const { isLoading } = useQuery('twitterData', getTwitterData, {
+    onSuccess: (res) => {
+      setTwitterDataList(res.data)
+      console.log(res.data)
+    },
+    retry: 1,
+  })
 
-  // if (isLoading) {
-  //   return <div className='isLoading'>로딩 중...</div>
-  // }
+  if (isLoading) {
+    return <div className='isLoading'>로딩 중...</div>
+  }
 
   const handleImgesClick = (img: string[]) => {
     setClickedImges(img)
@@ -43,7 +44,7 @@ const MainContent = ({ category }: ICategory) => {
       <main className={styles.mainContents}>
         {/* eslint-disable-next-line no-nested-ternary */}
         {category ? (
-          twitterData.map((data) => {
+          twitterDataList?.map((data) => {
             const { id, nickName, date, img, text } = data
             const dataKey = `data-${id}`
             return (
