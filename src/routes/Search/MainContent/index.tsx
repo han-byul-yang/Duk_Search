@@ -31,7 +31,7 @@ const MainContent = ({ category }: ICategory) => {
   })
 
   if (isLoading) {
-    return <Skeleton />
+    return <Skeleton category='ㅈㅓㄴㅊㅔ' />
   }
 
   const handleImgesClick = (img: string[]) => {
