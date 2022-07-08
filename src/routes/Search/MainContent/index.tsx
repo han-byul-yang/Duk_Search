@@ -8,6 +8,7 @@ import { searchKeyAtom } from 'store/atoms'
 import { ITwitterData } from 'types/types'
 import ModalPortal from '../Modal/ModalPortal'
 import Modal from '../Modal'
+import Skeleton from '../Skeleton'
 
 import styles from './mainContent.module.scss'
 
@@ -30,7 +31,7 @@ const MainContent = ({ category }: ICategory) => {
   })
 
   if (isLoading) {
-    return <div className='isLoading'>로딩 중...</div>
+    return <Skeleton />
   }
 
   const handleImgesClick = (img: string[]) => {
