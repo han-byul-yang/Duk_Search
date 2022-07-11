@@ -6,7 +6,7 @@ const sleep = (delay: number) => {
 }
 
 export const getTwitterData = async () => {
-  await sleep(100)
+  await sleep(1300)
 
   const data = await axios.get('data/twitterData.json')
 

@@ -6,7 +6,6 @@ import LNB from './LNB'
 import MainContent from './MainContent'
 
 import styles from './search.module.scss'
-import Skeleton from './Skeleton'
 
 const Search = () => {
   const [isBig, setIsBig] = useState(false)
@@ -40,7 +39,7 @@ const Search = () => {
           <SearchBar />
           <LNB />
           <Routes>
-            <Route path='/' element={<Skeleton category='전체' />} />
+            <Route path='/' element={<MainContent category='전체' />} />
             <Route path=':category' element={<MainContent />} />
           </Routes>
         </>

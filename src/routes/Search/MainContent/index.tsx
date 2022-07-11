@@ -26,12 +26,12 @@ const MainContent = ({ category }: ICategory) => {
   const { isLoading } = useQuery('twitterData', getTwitterData, {
     onSuccess: (res) => {
       setTwitterDataList(res.data)
+      console.log(isLoading) // implement of isLoading
     },
-    retry: 1,
   })
 
   if (isLoading) {
-    return <Skeleton category='ㅈㅓㄴㅊㅔ' />
+    return <Skeleton />
   }
 
   const handleImgesClick = (img: string[]) => {

@@ -1,10 +1,6 @@
 import styles from './skeleton.module.scss'
 
-interface ISkeletonProps {
-  category: string
-}
-
-const Skeleton = ({ category }: ISkeletonProps) => {
+const Skeleton = () => {
   const skeletonList = Array.from(Array(10).keys()) // 나중에 페이지 수를 props로 넘겨받아 10대신 page * 10 식으로 바꿔서 작성
 
   return (
