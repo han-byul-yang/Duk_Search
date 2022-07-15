@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import SearchBar from 'components/SearchBar'
@@ -35,14 +35,14 @@ const Search = () => {
           <LNB />
         </>
       ) : (
-        <>
+        <div className={styles.container}>
           <SearchBar />
           <LNB />
           <Routes>
             <Route path='/' element={<MainContent category='전체' />} />
             <Route path=':category' element={<MainContent />} />
           </Routes>
-        </>
+        </div>
       )}
     </div>
   )

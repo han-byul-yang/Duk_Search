@@ -1,11 +1,12 @@
 @use '../../../styles/constants/colors';
 
 .lnb {
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 440px;
+  width: 200px;
   height: 100vh;
-  padding: 0 50px;
+  background: colors.$BG_G;
 
   @media screen and (max-width: 1050px) {
     display: flex;
