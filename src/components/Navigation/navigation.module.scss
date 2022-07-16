@@ -1,11 +1,18 @@
 @use '../../styles/constants/colors';
 
 .navigation {
-  position: relative;
+  position: fixed;
+  left: 100px;
   width: 260px;
   height: 100vh;
 
+  @media screen and (max-width: 1440px) {
+    left: 0;
+  }
+
   @media screen and (max-width: 1050px) {
+    position: relative;
+    left: 0;
     width: auto;
     height: auto;
   }

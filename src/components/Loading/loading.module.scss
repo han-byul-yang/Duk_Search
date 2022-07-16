@@ -14,13 +14,14 @@
 
 .component {
   @include center;
-  min-height: 50vh;
+  height: 50px;
+  margin-top: 20px;
 }
 
 .ring {
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   animation: ring 2s linear infinite;
 
@@ -54,7 +55,7 @@
 
 .loading {
   font-size: 20px;
-  line-height: 200px;
+  line-height: 90px;
   color: colors.$LOADER;
   text-transform: uppercase;
   letter-spacing: 1px;

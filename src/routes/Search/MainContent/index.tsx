@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 import { useQuery } from 'react-query'
@@ -9,6 +9,7 @@ import { ITwitterData } from 'types/types'
 import ModalPortal from '../Modal/ModalPortal'
 import Modal from '../Modal'
 import Skeleton from '../Skeleton'
+import Loading from 'components/Loading'
 
 import styles from './mainContent.module.scss'
 
@@ -17,20 +18,60 @@ interface ICategory {
 }
 
 const MainContent = ({ category }: ICategory) => {
-  const [twitterDataList, setTwitterDataList] = useState<ITwitterData[]>()
+  const [twitterDataList, setTwitterDataList] = useState<ITwitterData[]>([])
   const [clickedImges, setClickedImges] = useState<string[]>()
   const [openModal, setOpenModal] = useState(false)
-  const searchKey = useRecoilValue(searchKeyAtom)
-  const params = useParams()
+  const [infiniteLoading, setInfiniteLoading] = useState(false)
+  const [showTarget, setShowTarget] = useState(false)
+  const [dumyData, setDumyData] = useState<ITwitterData[]>([]) // 데이터 받으면 지워줄 것
 
-  const { isLoading } = useQuery('twitterData', getTwitterData, {
+  const searchKey = useRecoilValue(searchKeyAtom)
+
+  const params = useParams()
+  const target = useRef<HTMLDivElement>(null)
+
+  const { isFetching } = useQuery('twitterData', getTwitterData, {
     onSuccess: (res) => {
       setTwitterDataList(res.data)
-      console.log(isLoading) // implement of isLoading
+      setDumyData(res.data) // 데이터 받으면 지워질 것(임시)
+      setShowTarget(true)
     },
   })
 
-  if (isLoading) {
+  const testFetch = useCallback(async () => {
+    const tempDumyData = [...dumyData]
+
+    setInfiniteLoading(true)
+    // eslint-disable-next-line no-new, no-promise-executor-return
+    await new Promise((resolve) => setTimeout(resolve, 1500))
+    setTwitterDataList((prevData) => [...prevData, ...tempDumyData])
+  }, [dumyData])
+
+  const handleIntersect = useCallback(
+    async ([entry]: any, observer: any) => {
+      if (entry.isIntersecting) {
+        observer.unobserve(entry.target)
+        await testFetch()
+        setInfiniteLoading(false)
+        observer.observe(target.current)
+      }
+    },
+    [testFetch]
+  )
+
+  useEffect(() => {
+    let observer: IntersectionObserver
+
+    if (target.current) {
+      observer = new IntersectionObserver(handleIntersect, {
+        threshold: 1,
+      })
+      observer.observe(target.current)
+    }
+    return () => observer && observer.disconnect()
+  }, [handleIntersect, target])
+
+  if (isFetching) {
     return <Skeleton />
   }
 
@@ -44,25 +85,29 @@ const MainContent = ({ category }: ICategory) => {
       <main className={styles.mainContents}>
         {/* eslint-disable-next-line no-nested-ternary */}
         {category ? (
-          twitterDataList?.map((data) => {
-            const { id, nickName, date, img, text } = data
-            const dataKey = `data-${id}`
-            return (
-              <div key={dataKey} className={styles.container}>
-                <div className={styles.nickName}>{nickName}</div>
-                <div className={styles.date}>{date}</div>
-                <div className={styles.text}>{text}</div>
-                {img.length !== 0 && (
-                  <button className={styles.imgContainer} type='button' onClick={() => handleImgesClick(img)}>
-                    {img.map((imgUrl, i) => {
-                      const imgKey = `imgUrl-${i}`
-                      return <img key={imgKey} className={styles.img} src={`${imgUrl}`} alt='게시글 이미지' />
-                    })}
-                  </button>
-                )}
-              </div>
-            )
-          })
+          <>
+            {twitterDataList?.map((data, index) => {
+              const { id, nickName, date, img, text } = data
+              const dataKey = `data-${index}`
+              return (
+                <div key={dataKey} className={styles.container}>
+                  <div className={styles.nickName}>{nickName}</div>
+                  <div className={styles.date}>{date}</div>
+                  <div className={styles.text}>{text}</div>
+                  {img.length !== 0 && (
+                    <button className={styles.imgContainer} type='button' onClick={() => handleImgesClick(img)}>
+                      {img.map((imgUrl, i) => {
+                        const imgKey = `imgUrl-${i}`
+                        return <img key={imgKey} className={styles.img} src={`${imgUrl}`} alt='게시글 이미지' />
+                      })}
+                    </button>
+                  )}
+                </div>
+              )
+            })}
+            {showTarget && <div ref={target} />}
+            {infiniteLoading && <Loading />}
+          </>
         ) : searchKey ? (
           <div className={styles.searchResult}>
             {params?.category} 카테고리에서 찾은 {searchKey}

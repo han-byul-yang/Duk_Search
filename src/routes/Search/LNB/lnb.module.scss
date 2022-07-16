@@ -1,14 +1,17 @@
 @use '../../../styles/constants/colors';
 
 .lnb {
-  position: relative;
+  position: fixed;
+  right: 100px;
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 130px;
   height: 100vh;
   background: colors.$BG_G;
 
   @media screen and (max-width: 1050px) {
+    position: relative;
+    right: 0;
     display: flex;
     align-items: center;
     width: 100%;
