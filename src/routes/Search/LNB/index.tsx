@@ -8,6 +8,7 @@ const categoryList = ['전체', '뉴스', '연예', '음악', '음식', '게임'
 const LNB = () => {
   return (
     <nav className={styles.lnb}>
+      <div className={styles.lnbHeader}>Categories</div>
       <ul>
         {categoryList.map((category) => (
           <li key={category}>

@@ -1,13 +1,15 @@
 @use '../../../styles/constants/colors';
+@use '../../../styles/base/fonts';
 
 .lnb {
   position: fixed;
-  right: 100px;
+  right: 20px;
   display: flex;
   flex-direction: column;
-  width: 130px;
+  width: 210px;
   height: 100vh;
-  background: colors.$BG_G;
+  margin-top: 50px;
+  border-left: 1px solid colors.$GRAY_100;
 
   @media screen and (max-width: 1050px) {
     position: relative;
@@ -19,17 +21,28 @@
     padding: 10px 30px;
     margin: 10px 0;
     border-bottom: 1px solid colors.$GRAY_100;
+    border-left: none;
   }
 
   @media screen and (max-width: 768px) {
     padding: 20px;
   }
 
+  .lnbHeader {
+    margin-top: 20px;
+    font-size: 21px;
+    text-align: center;
+
+    @media screen and (max-width: 1050px) {
+      display: none;
+    }
+  }
+
   ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 40px;
 
     @media screen and (max-width: 1050px) {
       display: flex;
@@ -46,8 +59,15 @@
 
     li {
       margin-bottom: 30px;
-      font-size: 18px;
-      font-weight: 600;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: colors.$GRAY_300;
+
+      :hover {
+        color: colors.$GRAY_100;
+        transition: color 0.1s linear;
+      }
 
       @media screen and (max-width: 1050px) {
         padding: 10px;

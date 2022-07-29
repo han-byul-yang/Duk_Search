@@ -2,13 +2,9 @@
 
 .navigation {
   position: fixed;
-  left: 100px;
+  left: 0;
   width: 260px;
   height: 100vh;
-
-  @media screen and (max-width: 1440px) {
-    left: 0;
-  }
 
   @media screen and (max-width: 1050px) {
     position: relative;
